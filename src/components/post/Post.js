@@ -1,7 +1,9 @@
-import { Avatar } from "@material-ui/core";
 import React from "react";
 import "./Post.css";
-import InputOption from "./InputOption";
+import InputOption from "../inputOption/InputOption";
+
+//Icons import
+import { Avatar } from "@material-ui/core";
 import ThumbUpAltOutlinedIcon from "@material-ui/icons/ThumbUpAltOutlined";
 import MessageOutlinedIcon from "@material-ui/icons/MessageOutlined";
 import ShareOutlinedIcon from "@material-ui/icons/ShareOutlined";
@@ -19,6 +21,7 @@ function Posts({ name, description, message, photoUrl }) {
       </div>
       <div className="post-body">
         <p>{message} </p>
+        <img src={photoUrl} alt="" />
       </div>
 
       <div className="post-buttons">

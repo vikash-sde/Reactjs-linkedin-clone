@@ -3,6 +3,7 @@
   padding: 15px;
   margin-bottom: 10px;
   border-radius: 10px;
+  border: 1px solid lightgrey;
 }
 
 .post-header {
@@ -24,6 +25,11 @@
 .post-body {
   overflow-wrap: anywhere;
 }
+
+/* .post-body > img {
+  width: 400px;
+  height: 400px;
+} */
 
 .post-buttons {
   display: flex;
