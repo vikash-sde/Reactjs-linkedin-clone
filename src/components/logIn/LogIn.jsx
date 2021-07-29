@@ -1,103 +1,40 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { login } from "../../features/userSlice";
-import { auth } from "../../firebase";
-import "./logIn.css";
+import {
+  LoginContainer,
+  Form,
+  Google,
+  Hero,
+  Join,
+  Nav,
+  Section,
+  SignIn,
+} from "./LogInStyle";
 
-function LogIn() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [profilePic, setProfilePic] = useState("");
-
-  const dispatch = useDispatch();
-
-  const loginToApp = (e) => {
-    e.preventDefault();
-    auth
-      .signInWithEmailAndPassword(email, password)
-      .then((userAuth) => {
-        dispatch(
-          login({
-            email: userAuth.user.email,
-            uid: userAuth.user.uid,
-            displayName: userAuth.user.name,
-            photoURL: userAuth.user.profilePic,
-          })
-        );
-      })
-      .catch((error) => alert(error));
-  };
-  const logInRegister = () => {
-    if (!name) {
-      return alert("please enter your Full name!");
-    }
-
-    auth
-      .createUserWithEmailAndPassword(email, password)
-      .then((userAuth) => {
-        userAuth.user
-          .updateProfile({
-            displayName: name,
-            photoURL: profilePic,
-          })
-          .then(() => {
-            dispatch(
-              login({
-                email: userAuth.user.email,
-                uid: userAuth.user.uid,
-                displayName: name,
-                photoURL: profilePic,
-              })
-            );
-          });
-      })
-      .catch((error) => alert(error));
-  };
-
+function Login(props) {
   return (
-    <div className="login">
-      <img
-        src="https://www.pngarts.com/files/7/Linkedin-Logo-PNG-Download-Image.png"
-        alt=""
-      />
-      <form action="">
-        <input
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          type="text"
-          placeholder="Full Name (required if registering)"
-        />
-        <input
-          value={profilePic}
-          onChange={(e) => setProfilePic(e.target.value)}
-          type="text"
-          placeholder="Profile picture URl(optional)"
-        />
-        <input
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          type="email"
-          placeholder="Email"
-        />
-        <input
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          type="password"
-          placeholder="Password"
-        />
-        <button type="submit" onClick={loginToApp}>
-          Sign In
-        </button>
-      </form>
-      <p>
-        Not a Memeber?
-        <span className="registerNow" onClick={logInRegister}>
-          Register Now
-        </span>
-      </p>
-    </div>
+    <LoginContainer>
+      <Nav>
+        <a href="/">
+          <img src="/images/login-logo.svg" alt="" />
+        </a>
+        <div>
+          <Join>Join now</Join>
+          <SignIn>Sign in</SignIn>
+        </div>
+      </Nav>
+      <Section>
+        <Hero>
+          <h1>Welcome to your professional community</h1>
+          <img src="/images/login-hero.svg" alt="" />
+        </Hero>
+        <Form>
+          <Google>
+            <img src="/images/google.svg" alt="" />
+            Sign in with Google
+          </Google>
+        </Form>
+      </Section>
+    </LoginContainer>
   );
 }
 
-export default LogIn;
+export default Login;
