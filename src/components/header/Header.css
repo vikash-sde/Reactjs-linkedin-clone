@@ -1,4 +1,5 @@
 .header {
+  max: 1440px;
   position: sticky;
   top: 0;
   display: flex;

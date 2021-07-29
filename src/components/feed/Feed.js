@@ -11,8 +11,12 @@ import ImageIcon from "@material-ui/icons/Image";
 import SubscriptionsIcon from "@material-ui/icons/Subscriptions";
 import EventNoteIcon from "@material-ui/icons/EventNote";
 import CalendarViewDayIcon from "@material-ui/icons/CalendarViewDay";
+import { selectUser } from "../../features/userSlice";
+import { useSelector } from "react-redux";
 
 function Feed() {
+  const user = useSelector(selectUser);
+
   const [input, setInput] = useState("");
   const [posts, setPosts] = useState([]);
 
@@ -34,10 +38,10 @@ function Feed() {
     e.preventDefault();
 
     db.collection("posts").add({
-      name: "Vikash Gupta",
-      description: "this is a test",
+      name: user.displayName,
+      description: user.email,
       message: input,
-      photoUrl: "",
+      photoUrl: user.photoURL || "",
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
     });
 

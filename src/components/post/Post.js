@@ -8,15 +8,20 @@ import ThumbUpAltOutlinedIcon from "@material-ui/icons/ThumbUpAltOutlined";
 import MessageOutlinedIcon from "@material-ui/icons/MessageOutlined";
 import ShareOutlinedIcon from "@material-ui/icons/ShareOutlined";
 import SendOutlinedIcon from "@material-ui/icons/SendOutlined";
+import { selectUser } from "../../features/userSlice";
+import { useSelector } from "react-redux";
 
-function Posts({ name, description, message, photoUrl }) {
+function Posts({ name, message, photoUrl }) {
+  const user = useSelector(selectUser);
+
   return (
     <div className="post">
       <div className="post-header">
-        <Avatar src="https://media-exp1.licdn.com/dms/image/C5603AQGAjDXIMzV7Ig/profile-displayphoto-shrink_200_200/0/1615268128311?e=1632355200&v=beta&t=NS-OqRRZJL8m4HXmQlbGwoCQ2gOCl3LEUJW9OB8ODD4" />
+        <Avatar src={user.photoURL}>{user?.email[0]}</Avatar>
+
         <div className="post-info">
-          <h2>{name}</h2>
-          <p>{description}</p>
+          <h2>{user.displayName}</h2>
+          <p>{user.email}</p>
         </div>
       </div>
       <div className="post-body">
