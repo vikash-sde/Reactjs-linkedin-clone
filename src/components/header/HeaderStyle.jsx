@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const HeaderContainer = styled.div`
+export const HeaderContainer = styled.div`
   background-color: white;
   border-bottom: 1px solid lightgray;
   padding: 0 24px;
@@ -11,19 +11,19 @@ const HeaderContainer = styled.div`
   /* top: 0; */
 `;
 
-const Content = styled.div`
+export const Content = styled.div`
   display: flex;
   align-items: center;
   margin: 0 auto;
   min-height: 100%;
   max-width: 1128px;
 `;
-const Logo = styled.span`
+export const Logo = styled.span`
   margin-right: 8px;
   font-size: 0px;
 `;
 
-const Search = styled.div`
+export const Search = styled.div`
   opacity: 1;
   flex-grow: 1;
   position: relative;
@@ -44,7 +44,7 @@ const Search = styled.div`
     }
   }
 `;
-const SearchIcon = styled.div`
+export const SearchIcon = styled.div`
   width: 40px;
   position: absolute;
   z-index: 1;
@@ -58,7 +58,7 @@ const SearchIcon = styled.div`
   align-items: center;
 `;
 
-const Nav = styled.nav`
+export const Nav = styled.nav`
   margin-left: auto;
   display: block;
   @media (max-width: 768px) {
@@ -70,7 +70,7 @@ const Nav = styled.nav`
   }
 `;
 
-const NavListWrap = styled.ul`
+export const NavListWrap = styled.ul`
   display: flex;
   flex-wrap: nowrap;
   list-style-type: none;
@@ -90,7 +90,7 @@ const NavListWrap = styled.ul`
   }
 `;
 
-const NavList = styled.li`
+export const NavList = styled.li`
   display: flex;
   align-items: center;
   a {
@@ -127,13 +127,20 @@ const NavList = styled.li`
     }
   }
 `;
+export const SignOut = styled.div`
+  position: absolute;
+  top: 45px;
+  background: white;
+  width: 100px;
+  height: 40px;
+  border-radius: 0 0 5px 5px;
+  font-size: 16px;
+  transition-duration: 167ms;
+  text-align: center;
+  display: none;
+`;
 
-const User = styled(NavList)`
-  a > svg {
-    width: 24px;
-    border-radius: 50%;
-  }
-
+export const User = styled(NavList)`
   a > img {
     width: 24px;
     height: 24px;
@@ -144,34 +151,16 @@ const User = styled(NavList)`
     display: flex;
     align-items: center;
   }
+
+  &:hover {
+    ${SignOut} {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+    }
+  }
 `;
 
-// const SignOut = styled.div`
-//   position: absolute;
-//   top: 45px;
-//   background: white;
-//   border-radius: 0 0 5px 5px;
-//   width: 100px;
-//   height: 40px;
-//   font-size: 16px;
-//   transition-duration: 167ms;
-//   text-align: center;
-//   display: none;
-// `;
-
-const Work = styled(User)`
+export const Work = styled(User)`
   border-left: 1px solid rgba(0, 0, 0, 0.08);
 `;
-
-export {
-  HeaderContainer,
-  Logo,
-  Content,
-  Search,
-  SearchIcon,
-  Nav,
-  NavListWrap,
-  NavList,
-  Work,
-  User,
-};

@@ -10,6 +10,7 @@ import {
   NavList,
   Work,
   User,
+  SignOut,
 } from "../header/HeaderStyle";
 
 function Header() {
@@ -69,13 +70,15 @@ function Header() {
             <User>
               <a>
                 <img src="/images/user.svg" alt="" />
-                <span>Me</span>
-                <img src="/images/down-icon.svg" alt="" />
+                <span>
+                  Me
+                  <img src="/images/down-icon.svg" alt="" />
+                </span>
               </a>
 
-              {/* <SignOut>
+              <SignOut>
                 <a>Sign Out</a>
-              </SignOut> */}
+              </SignOut>
             </User>
 
             <Work>
